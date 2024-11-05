@@ -35,5 +35,10 @@ export const {
       md: "0.875rem",
       sm: "0.75rem",
     },
+
+    fonts: {
+      title: "var(--font-baloo2)",
+      body: "var(--font-epilogue)",
+    },
   },
 });

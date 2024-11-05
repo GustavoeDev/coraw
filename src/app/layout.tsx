@@ -1,16 +1,18 @@
 import { globalStyles } from "@/styles/global";
 import { Footer } from "@/styles/pages/layout";
 import { getCssText } from "@/styles/stitches.config";
-import { Baloo_2, Roboto } from "next/font/google";
+import { Baloo_2, Epilogue } from "next/font/google";
 
 const baloo2 = Baloo_2({
   subsets: ["latin"],
   weight: ["400", "700"],
+  variable: "--font-baloo2",
 });
 
-const roboto = Roboto({
+const epilogue = Epilogue({
   subsets: ["latin"],
   weight: ["400", "700"],
+  variable: "--font-epilogue",
 });
 
 globalStyles();
@@ -21,14 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${baloo2.variable} ${epilogue.variable}`}>
       <head>
         <style
           id="stitches"
           dangerouslySetInnerHTML={{ __html: getCssText() }}
         />
       </head>
-      <body className={`${roboto.className} ${baloo2.className}`}>
+      <body>
         {children}
         <Footer>
           <div>
