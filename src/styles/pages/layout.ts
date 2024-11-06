@@ -21,5 +21,10 @@ export const Footer = styled("footer", {
         color: "$blue500",
       },
     },
+
+    "@sm": {
+      flexDirection: "column",
+      gap: "0.5rem",
+    },
   },
 });

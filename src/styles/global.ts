@@ -23,4 +23,10 @@ export const globalStyles = globalCss({
     outline: "0",
     boxShadow: `0 0 0 2px $blue500`,
   },
+
+  "@lg": {
+    html: {
+      fontSize: "87.5%",
+    },
+  },
 });

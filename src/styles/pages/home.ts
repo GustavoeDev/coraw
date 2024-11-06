@@ -9,6 +9,13 @@ export const RegistrationContainer = styled("div", {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  gap: "1rem",
+
+  "@sm": {
+    flexDirection: "column",
+    padding: "2rem",
+    gap: "2rem",
+  },
 });
 
 export const RegistrationContent = styled("div", {
@@ -46,6 +53,10 @@ export const RegistrationIcons = styled("div", {
       color: "$blue500",
     },
   },
+
+  "@md": {
+    gridTemplateColumns: "1fr",
+  },
 });
 
 export const RegistrationModal = styled("div", {
@@ -81,6 +92,11 @@ export const RegistrationModal = styled("div", {
       color: "$blue500",
       textDecoration: "none",
     },
+  },
+
+  "@md": {
+    maxWidth: "31rem",
+    width: "100%",
   },
 });
 
