@@ -6,7 +6,7 @@ export const Header = styled("header", {
   alignItems: "center",
 
   backgroundColor: "$gray900",
-  padding: "0.3rem 0",
+  padding: "1.5rem 0",
 });
 
 export const LoginContainer = styled("div", {
