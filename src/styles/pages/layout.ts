@@ -25,6 +25,7 @@ export const Footer = styled("footer", {
     "@sm": {
       flexDirection: "column",
       gap: "0.5rem",
+      padding: 0,
     },
   },
 });

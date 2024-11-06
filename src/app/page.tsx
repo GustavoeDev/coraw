@@ -6,6 +6,7 @@ import {
   RegistrationModalInputs,
   RegistrationTerms,
 } from "@/styles/pages/home";
+import Link from "next/link";
 
 import {
   MdCalendarMonth,
@@ -86,7 +87,7 @@ export default function Home() {
         <button type="submit">Cadastrar</button>
 
         <p>
-          Já possui cadastro? <a href="#">Faça login</a>
+          Já possui cadastro? <Link href="/login">Faça login</Link>
         </p>
       </RegistrationModal>
     </RegistrationContainer>

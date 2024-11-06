@@ -46,5 +46,6 @@ export const {
     sm: "(max-width: 768px)",
     md: "(max-width: 1024px)",
     lg: "(max-width: 1100px)",
+    xl: "(max-width: 1200px)",
   },
 });
