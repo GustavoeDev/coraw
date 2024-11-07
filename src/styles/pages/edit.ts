@@ -1,6 +1,6 @@
 import { styled } from "../stitches.config";
 
-export const NewArticleContainer = styled("div", {
+export const ArticleEditContainer = styled("div", {
   maxWidth: "1440px",
   margin: "0 auto",
   padding: "4rem 10rem 4rem",
@@ -16,7 +16,7 @@ export const NewArticleContainer = styled("div", {
   },
 });
 
-export const NewArticleForm = styled("form", {
+export const EditForm = styled("form", {
   maxWidth: "500px",
   width: "100%",
 
@@ -89,11 +89,11 @@ export const NewArticleForm = styled("form", {
   },
 });
 
-export const LabelContainer = styled("div", {
+export const LabelContainerEdit = styled("div", {
   position: "relative",
 });
 
-export const FileLabelSelect = styled("label", {
+export const FileLabelSelectEdit = styled("label", {
   backgroundColor: "$gray800",
   padding: "0.75rem",
   borderRadius: 6,
@@ -102,7 +102,7 @@ export const FileLabelSelect = styled("label", {
   color: "$gray600",
 });
 
-export const FileLabel = styled("label", {
+export const FileLabelEdit = styled("label", {
   position: "absolute",
   backgroundColor: "$gray700",
   padding: "0.75rem 0",
