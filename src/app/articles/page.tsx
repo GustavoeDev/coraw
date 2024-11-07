@@ -1,35 +1,12 @@
-import {
-  ArticlesContainer,
-  HeaderArticles,
-  HeaderNavigation,
-} from "@/styles/pages/articles";
+import { ArticlesContainer } from "@/styles/pages/articles";
 
-import Image from "next/image";
-
-import logoCoraw from "../../assets/logo.svg";
 import { ArticleCard } from "@/components/ArticlesCard";
-import MenuHamburguer from "@/components/MenuHamburguerUser";
+import MenuUser from "@/components/MenuUser";
 
 export default function Articles() {
   return (
     <>
-      <HeaderArticles>
-        <div>
-          <Image src={logoCoraw} alt="Logo do Coraw" />
-          <HeaderNavigation>
-            <a href="#" data-active={true}>
-              Meus artigos
-            </a>
-            <a href="#" data-active={false}>
-              Publicar artigo
-            </a>
-            <p>
-              Olá, <span>Gustavo!</span>
-            </p>
-          </HeaderNavigation>
-          <MenuHamburguer />
-        </div>
-      </HeaderArticles>
+      <MenuUser />
       <ArticlesContainer>
         <h3>Meus artigos</h3>
         <div>
