@@ -1,20 +1,13 @@
-import {
-  Header,
-  LoginContainer,
-  LoginContent,
-  LoginInput,
-} from "@/styles/pages/login";
+import { LoginContainer, LoginContent, LoginInput } from "@/styles/pages/login";
 import Image from "next/image";
 
-import logoCoraw from "../../assets/logo.svg";
 import octopusImg from "../../assets/octopus.png";
+import Header from "@/components/Header";
 
 export default function Login() {
   return (
     <>
-      <Header>
-        <Image src={logoCoraw} alt="Logo do Coraw" />
-      </Header>
+      <Header />
       <LoginContainer>
         <LoginContent>
           <div>

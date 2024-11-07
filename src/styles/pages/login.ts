@@ -1,14 +1,5 @@
 import { styled } from "../stitches.config";
 
-export const Header = styled("header", {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-
-  backgroundColor: "$gray900",
-  padding: "1.5rem 0",
-});
-
 export const LoginContainer = styled("div", {
   maxWidth: "1440px",
   margin: "0 auto",
