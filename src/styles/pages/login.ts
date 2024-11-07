@@ -82,6 +82,10 @@ export const LoginInput = styled("div", {
     display: "flex",
     flexDirection: "column",
     gap: "0.5rem",
+
+    "&:nth-child(1)": {
+      marginBottom: "1rem",
+    },
   },
 
   input: {

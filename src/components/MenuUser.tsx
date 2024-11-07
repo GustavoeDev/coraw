@@ -13,9 +13,17 @@ import logoCoraw from "../assets/logo.svg";
 
 import { useEffect, useState } from "react";
 import { MdMenu, MdOutlineClose } from "react-icons/md";
+import Link from "next/link";
 
-export default function MenuHamburguer() {
+export default function MenuUser() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isActive, setIsActive] = useState("");
+
+  useEffect(() => {
+    const currentUrl = window.location.pathname;
+
+    setIsActive(currentUrl);
+  }, [isActive]);
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -44,12 +52,15 @@ export default function MenuHamburguer() {
       <div>
         <Image src={logoCoraw} alt="Logo do Coraw" />
         <HeaderNavigation>
-          <a href="#" data-active={true}>
+          <Link
+            href="/articles"
+            data-active={isActive === "/articles" ? true : false}
+          >
             Meus artigos
-          </a>
-          <a href="#" data-active={false}>
+          </Link>
+          <Link href="/new" data-active={isActive === "/new" ? true : false}>
             Publicar artigo
-          </a>
+          </Link>
           <p>
             Olá, <span>Gustavo!</span>
           </p>
@@ -64,14 +75,14 @@ export default function MenuHamburguer() {
         <NavMenu active={isMenuOpen}>
           <NavList active={isMenuOpen}>
             <li>
-              <a href="#" onClick={closeMenu}>
+              <Link href="/articles" onClick={closeMenu}>
                 Meus Artigos
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" onClick={closeMenu}>
+              <Link href="/new" onClick={closeMenu}>
                 Publicar artigo
-              </a>
+              </Link>
             </li>
           </NavList>
         </NavMenu>
