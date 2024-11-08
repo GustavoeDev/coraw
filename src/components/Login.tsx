@@ -11,9 +11,10 @@ import Image from "next/image";
 import octopusImg from "../assets/octopus.png";
 import Header from "@/components/Header";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { usersApi } from "@/lib/axios";
 import { redirect } from "next/navigation";
+import { UserValidLoginContext } from "@/contexts/UserValidLogin";
 
 interface UserValid {
   email: string;
@@ -24,6 +25,8 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { addUserValid } = useContext(UserValidLoginContext);
+
   async function handleCheckUserValid(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const response = await usersApi.get("/users");
@@ -33,7 +36,7 @@ export default function Login() {
       (user: UserValid) => user.email === email && user.password === password
     );
 
-    console.log(userValid);
+    addUserValid(userValid);
 
     if (userValid) {
       redirect("/articles");

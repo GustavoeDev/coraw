@@ -1,3 +1,4 @@
+import UserValidLogin from "@/contexts/UserValidLogin";
 import { globalStyles } from "@/styles/global";
 import { Footer } from "@/styles/pages/layout";
 import { getCssText } from "@/styles/stitches.config";
@@ -31,7 +32,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
+        <UserValidLogin>{children}</UserValidLogin>
         <Footer>
           <div>
             <p>Todos os direitos reservados</p>
