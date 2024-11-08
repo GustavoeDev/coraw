@@ -15,7 +15,11 @@ import { useEffect, useState } from "react";
 import { MdMenu, MdOutlineClose } from "react-icons/md";
 import Link from "next/link";
 
-export default function MenuUser() {
+interface MenuUserProps {
+  name: string | undefined;
+}
+
+export default function MenuUser({ name }: MenuUserProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isActive, setIsActive] = useState("");
 
@@ -62,7 +66,7 @@ export default function MenuUser() {
             Publicar artigo
           </Link>
           <p>
-            Olá, <span>Gustavo!</span>
+            Olá, <span>{name}</span>
           </p>
         </HeaderNavigation>
         <NavIcon

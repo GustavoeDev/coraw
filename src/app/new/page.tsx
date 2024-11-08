@@ -1,4 +1,7 @@
+"use client";
+
 import MenuUser from "@/components/MenuUser";
+import { UserValidLoginContext } from "@/contexts/UserValidLogin";
 import {
   FileLabel,
   FileLabelSelect,
@@ -6,11 +9,16 @@ import {
   NewArticleContainer,
   NewArticleForm,
 } from "@/styles/pages/new";
+import { useContext } from "react";
 
 export default function NewArticle() {
+  const { userValid } = useContext(UserValidLoginContext);
+
+  const name = userValid?.name.split(" ")[0];
+
   return (
     <>
-      <MenuUser />
+      <MenuUser name={name} />
       <NewArticleContainer>
         <NewArticleForm action="">
           <h3>Publique um novo artigo</h3>

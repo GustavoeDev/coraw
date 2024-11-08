@@ -1,10 +1,11 @@
 "use client";
 
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 interface UserValid {
   email: string;
   password: string;
+  name: string;
 }
 
 interface UserValidLoginContextType {
@@ -21,11 +22,21 @@ interface UserValidLoginProps {
 }
 
 export default function UserValidLogin({ children }: UserValidLoginProps) {
-  const [userValid, setUserValid] = useState<UserValid | null>(null);
+  const [userValid, setUserValid] = useState<UserValid | null>(() => {
+    const storedStateAsJSON = localStorage.getItem("@coraw:userValid-1.0.0");
+    return storedStateAsJSON ? JSON.parse(storedStateAsJSON) : null;
+  });
 
   function addUserValid(user: UserValid) {
     setUserValid(user);
   }
+
+  useEffect(() => {
+    if (userValid) {
+      const stateJSON = JSON.stringify(userValid);
+      localStorage.setItem("@coraw:userValid-1.0.0", stateJSON);
+    }
+  }, [userValid]);
 
   return (
     <UserValidLoginContext.Provider value={{ userValid, addUserValid }}>
