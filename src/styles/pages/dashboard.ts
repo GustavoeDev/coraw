@@ -16,6 +16,10 @@ export const DashboardContainer = styled("div", {
     fontFamily: "$title",
     margin: "1rem 0",
   },
+
+  "@sm": {
+    padding: "2rem",
+  },
 });
 
 export const DashboardInfo = styled("div", {
@@ -49,9 +53,16 @@ export const DashboardInfo = styled("div", {
       },
     },
   },
+
+  "@sm": {
+    gridTemplateColumns: "1fr",
+  },
 });
 
-export const ArticlesWrapper = styled("div", {});
+export const TableContainer = styled("div", {
+  overflowX: "auto",
+  whiteSpace: "nowrap",
+});
 
 export const ArticlesTable = styled("table", {
   width: "100%",

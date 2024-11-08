@@ -1,9 +1,9 @@
 import Header from "@/components/Header";
 import {
   ArticlesTable,
-  ArticlesWrapper,
   DashboardContainer,
   DashboardInfo,
+  TableContainer,
   UsersTable,
 } from "@/styles/pages/dashboard";
 import { BiTrash } from "react-icons/bi";
@@ -37,48 +37,54 @@ export default function Dashboard() {
           </div>
         </DashboardInfo>
         <h4>Tabela de artigos</h4>
-        <ArticlesWrapper>
-          <ArticlesTable>
-            <tbody>
-              <tr>
-                <td width="45%">O impacto do ‘coral bleaching’ nos oceanos</td>
-                <td width="25%">Karina Marina Cristina</td>
-                <td>07/11/2024</td>
-                <td>
-                  <span>
-                    <MdOutlineVisibility size={16} />
-                  </span>
-                  <span>
-                    <MdCreate size={16} />
-                  </span>
-                  <span>
-                    <BiTrash color="#FF1313" size={16} />
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </ArticlesTable>
+        <div>
+          <TableContainer>
+            <ArticlesTable>
+              <tbody>
+                <tr>
+                  <td width="45%">
+                    O impacto do ‘coral bleaching’ nos oceanos
+                  </td>
+                  <td width="25%">Karina Marina Cristina</td>
+                  <td>07/11/2024</td>
+                  <td>
+                    <span>
+                      <MdOutlineVisibility size={16} />
+                    </span>
+                    <span>
+                      <MdCreate size={16} />
+                    </span>
+                    <span>
+                      <BiTrash color="#FF1313" size={16} />
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </ArticlesTable>
+          </TableContainer>
           <h4>Tabela de usuários</h4>
-          <UsersTable>
-            <tbody>
-              <tr>
-                <td width="45%">Karina Marina Cristina</td>
-                <td>20 artigos</td>
-                <td>
-                  <span>
-                    <MdOutlineVisibility size={16} />
-                  </span>
-                  <span>
-                    <MdCreate size={16} />
-                  </span>
-                  <span>
-                    <BiTrash color="#FF1313" size={16} />
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </UsersTable>
-        </ArticlesWrapper>
+          <TableContainer>
+            <UsersTable>
+              <tbody>
+                <tr>
+                  <td width="45%">Karina Marina Cristina</td>
+                  <td>20 artigos</td>
+                  <td>
+                    <span>
+                      <MdOutlineVisibility size={16} />
+                    </span>
+                    <span>
+                      <MdCreate size={16} />
+                    </span>
+                    <span>
+                      <BiTrash color="#FF1313" size={16} />
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </UsersTable>
+          </TableContainer>
+        </div>
       </DashboardContainer>
     </>
   );
