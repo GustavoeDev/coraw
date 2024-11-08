@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "name": "Gustavo Emanuel",
+      "email": "gustavoemanuel00@hotmail.com",
+      "password": "gugu123",
+      "articles": [],
+      "id": 1
+    },
+    {
+      "name": "João Neto",
+      "email": "joao@hotmail.com",
+      "password": "joao123",
+      "articles": [],
+      "id": 2
+    }
+  ]
+}
