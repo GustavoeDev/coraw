@@ -59,7 +59,7 @@ export const RegistrationIcons = styled("div", {
   },
 });
 
-export const RegistrationModal = styled("div", {
+export const RegistrationModal = styled("form", {
   backgroundColor: "$gray900",
   padding: "1.5rem",
   borderRadius: "8px",

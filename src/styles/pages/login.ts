@@ -28,7 +28,7 @@ export const LoginContainer = styled("div", {
   },
 });
 
-export const LoginContent = styled("div", {
+export const LoginContent = styled("form", {
   display: "flex",
   flexDirection: "column",
   gap: "4rem",
@@ -46,16 +46,6 @@ export const LoginContent = styled("div", {
 
   p: {
     color: "$gray500",
-  },
-
-  button: {
-    border: 0,
-    padding: "1rem 0",
-    borderRadius: 6,
-    backgroundColor: "$blue500",
-    color: "$white",
-    fontSize: "$md",
-    cursor: "pointer",
   },
 
   "@xl": {
@@ -86,5 +76,28 @@ export const LoginInput = styled("div", {
     backgroundColor: "$gray800",
     color: "$white",
     fontSize: "$md",
+  },
+});
+
+export const LoginFooter = styled("div", {
+  button: {
+    border: 0,
+    padding: "1rem 0",
+    borderRadius: 6,
+    backgroundColor: "$blue500",
+    color: "$white",
+    fontSize: "$md",
+    cursor: "pointer",
+    marginBottom: "1rem",
+  },
+
+  span: {
+    textAlign: "center",
+    fontSize: "$sm",
+
+    a: {
+      color: "$blue500",
+      textDecoration: "none",
+    },
   },
 });
