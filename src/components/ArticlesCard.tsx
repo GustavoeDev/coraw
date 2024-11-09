@@ -1,20 +1,32 @@
+"use client";
+
 import { ArticlesCard } from "@/styles/components/ArticlesCard";
 
 import Image from "next/image";
 
 import bgImg from "../assets/bgImg.png";
 
-export function ArticleCard() {
+interface ArticleCardProps {
+  title: string;
+  description: string;
+  createdAt: Date;
+}
+
+export function ArticleCard({
+  title,
+  description,
+  createdAt,
+}: ArticleCardProps) {
+  const dateFormatter = new Intl.DateTimeFormat("pt-BR");
+  const formattedDate = dateFormatter.format(new Date(createdAt));
+
   return (
-    <ArticlesCard href="#">
+    <ArticlesCard>
       <Image src={bgImg} alt="" />
       <div>
-        <span>26/01/2022</span>
-        <h4>O impacto do ‘coral bleaching’ nos oceanos</h4>
-        <p>
-          Este artigo discute os efeitos do branqueamento de corais na
-          biodiversidade marinha e explora possíveis soluções
-        </p>
+        <span>{formattedDate}</span>
+        <h4>{title}</h4>
+        <p>{description}</p>
       </div>
     </ArticlesCard>
   );

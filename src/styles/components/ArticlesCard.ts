@@ -1,17 +1,17 @@
 import { styled } from "../stitches.config";
 
-export const ArticlesCard = styled("a", {
+export const ArticlesCard = styled("div", {
   display: "flex",
   flexDirection: "column",
   backgroundColor: "$gray900",
-  cursor: "pointer",
-  textDecoration: "none",
+  borderRadius: 6,
 
   img: {
     width: "100%",
     height: "112px",
     objectFit: "cover",
     objectPosition: "center",
+    borderRadius: 6,
   },
 
   div: {

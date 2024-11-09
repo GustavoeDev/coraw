@@ -2,10 +2,20 @@
 
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-interface UserValid {
+export interface Article {
+  title: string;
+  description: string;
+  fileUpload: File | undefined;
+  fileUrl: string | undefined;
+  createdAt: Date;
+}
+
+export interface UserValid {
+  id: number;
   email: string;
   password: string;
   name: string;
+  articles: Article[];
 }
 
 interface UserValidLoginContextType {
@@ -13,7 +23,7 @@ interface UserValidLoginContextType {
   addUserValid: (user: UserValid) => void;
 }
 
-export const UserValidLoginContext = createContext(
+export const UserValidLoginContext = createContext<UserValidLoginContextType>(
   {} as UserValidLoginContextType
 );
 
@@ -22,10 +32,14 @@ interface UserValidLoginProps {
 }
 
 export default function UserValidLogin({ children }: UserValidLoginProps) {
-  const [userValid, setUserValid] = useState<UserValid | null>(() => {
+  const [userValid, setUserValid] = useState<UserValid | null>(null);
+
+  useEffect(() => {
     const storedStateAsJSON = localStorage.getItem("@coraw:userValid-1.0.0");
-    return storedStateAsJSON ? JSON.parse(storedStateAsJSON) : null;
-  });
+    if (storedStateAsJSON) {
+      setUserValid(JSON.parse(storedStateAsJSON));
+    }
+  }, []);
 
   function addUserValid(user: UserValid) {
     setUserValid(user);

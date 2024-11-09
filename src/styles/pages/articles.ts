@@ -4,6 +4,7 @@ export const ArticlesContainer = styled("main", {
   maxWidth: "1440px",
   margin: "0 auto",
   padding: "1.5rem 10rem 4.5rem",
+  minHeight: "100vh",
 
   h3: {
     fontFamily: "$title",

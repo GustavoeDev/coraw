@@ -78,6 +78,7 @@ export const NewArticleForm = styled("form", {
   },
 
   button: {
+    marginTop: "1rem",
     backgroundColor: "$blue500",
     border: 0,
     color: "$white",
