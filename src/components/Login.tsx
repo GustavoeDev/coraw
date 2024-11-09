@@ -38,8 +38,17 @@ export default function Login() {
 
     addUserValid(userValid);
 
+    const dataAdmin: UserValid = (await usersApi.get("/admin")).data;
+
+    const adminUserValid =
+      dataAdmin.email === email && dataAdmin.password === password;
+
     if (userValid) {
       redirect("/articles");
+    }
+
+    if (adminUserValid) {
+      redirect("/admin/dashboard");
     }
   }
 

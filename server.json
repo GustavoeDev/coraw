@@ -30,5 +30,10 @@
       ],
       "id": 2
     }
-  ]
+  ],
+  "admin": {
+    "name": "Administrador",
+    "email": "admin@coraw.com",
+    "password": "admin123"
+  }
 }
