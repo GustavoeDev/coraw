@@ -4,14 +4,30 @@
       "name": "Gustavo Emanuel",
       "email": "gustavoemanuel00@hotmail.com",
       "password": "gugu123",
-      "articles": [],
+      "articles": [
+        {
+          "title": "oceano",
+          "description": "dvndkov",
+          "fileUpload": {},
+          "fileUrl": "https://res.cloudinary.com/diebb0uc0/raw/upload/v1731111034/brgxps3ipgopbnxk1ffa.png",
+          "createdAt": "2024-11-09T00:10:35.133Z"
+        }
+      ],
       "id": 1
     },
     {
       "name": "João Neto",
       "email": "joao@hotmail.com",
       "password": "joao123",
-      "articles": [],
+      "articles": [
+        {
+          "title": "mar",
+          "description": "bbfgbf",
+          "fileUpload": {},
+          "fileUrl": "https://res.cloudinary.com/diebb0uc0/raw/upload/v1731110747/ker9drzapqhndkoqe4ax.zip",
+          "createdAt": "2024-11-09T00:05:47.697Z"
+        }
+      ],
       "id": 2
     }
   ]
