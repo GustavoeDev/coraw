@@ -4,6 +4,7 @@ export const DashboardContainer = styled("div", {
   maxWidth: "1440px",
   margin: "0 auto",
   padding: "1.5rem 10rem 2rem",
+  minHeight: "100vh",
 
   h3: {
     fontSize: "$lg",
@@ -82,14 +83,23 @@ export const ArticlesTable = styled("table", {
     "&:last-child": {
       borderTopRightRadius: 6,
       borderBottomRightRadius: 6,
-      textAlign: "right",
     },
 
-    svg: {
+    button: {
+      display: "flex",
+      alignItems: "center",
       cursor: "pointer",
-      marginLeft: "0.5rem",
+      background: "none",
+      border: 0,
+      color: "$white",
     },
   },
+});
+
+export const TdButton = styled("td", {
+  display: "flex",
+  gap: "0.5rem",
+  justifyContent: "right",
 });
 
 export const UsersTable = styled("table", {
@@ -113,9 +123,13 @@ export const UsersTable = styled("table", {
       textAlign: "right",
     },
 
-    svg: {
+    button: {
+      display: "flex",
+      alignItems: "center",
       cursor: "pointer",
-      marginLeft: "0.5rem",
+      background: "none",
+      border: 0,
+      color: "$white",
     },
   },
 });
