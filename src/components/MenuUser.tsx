@@ -56,6 +56,9 @@ export default function MenuUser({ name }: MenuUserProps) {
       <div>
         <Image src={logoCoraw} alt="Logo do Coraw" />
         <HeaderNavigation>
+          <p>
+            Olá, <span>{name}</span>
+          </p>
           <Link
             href="/articles"
             data-active={isActive === "/articles" ? true : false}
@@ -65,9 +68,8 @@ export default function MenuUser({ name }: MenuUserProps) {
           <Link href="/new" data-active={isActive === "/new" ? true : false}>
             Publicar artigo
           </Link>
-          <p>
-            Olá, <span>{name}</span>
-          </p>
+
+          <Link href="/login">Sair</Link>
         </HeaderNavigation>
         <NavIcon
           onClick={toggleMenu}
@@ -86,6 +88,11 @@ export default function MenuUser({ name }: MenuUserProps) {
             <li>
               <Link href="/new" onClick={closeMenu}>
                 Publicar artigo
+              </Link>
+            </li>
+            <li>
+              <Link href="/login" onClick={closeMenu}>
+                Sair
               </Link>
             </li>
           </NavList>

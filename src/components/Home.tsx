@@ -72,7 +72,7 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <Header variant="normal" />
       <RegistrationContainer>
         <RegistrationContent>
           <h1>Coraw</h1>

@@ -54,7 +54,7 @@ export default function Login() {
 
   return (
     <>
-      <Header />
+      <Header variant="normal" />
       <LoginContainer>
         <LoginContent action="" onSubmit={handleCheckUserValid}>
           <div>

@@ -63,7 +63,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <Header />
+      <Header variant="dashboard" />
       <DashboardContainer>
         <h3>Dashboard</h3>
         <DashboardInfo>
@@ -87,44 +87,54 @@ export default function Dashboard() {
           <TableContainer>
             <ArticlesTable>
               <tbody>
-                {users.map((user) => {
-                  return user.articles.map((article, index) => (
-                    <tr key={index}>
-                      <td width="45%">{article.title}</td>
-                      <td width="25%">{user.name}</td>
-                      <td>
-                        {dateFormatter.format(new Date(article.createdAt))}
-                      </td>
-                      <TdButton>
-                        <button>
-                          <a href={article.fileUrl} target="_blank">
-                            <MdDownload size={16} />
-                          </a>
-                        </button>
-                        <button
-                          onClick={() =>
-                            handleChangeInfoClicked(article, user.id)
-                          }
-                        >
-                          <MdCreate size={16} />
-                        </button>
+                {users.some((user) => user.articles.length > 0) ? (
+                  users.map((user) =>
+                    user.articles.map((article, index) => (
+                      <tr key={index}>
+                        <td width="45%">{article.title}</td>
+                        <td width="25%">{user.name}</td>
+                        <td>
+                          {dateFormatter.format(new Date(article.createdAt))}
+                        </td>
+                        <TdButton>
+                          <button>
+                            <a href={article.fileUrl} target="_blank">
+                              <MdDownload size={16} />
+                            </a>
+                          </button>
+                          <button
+                            onClick={() =>
+                              handleChangeInfoClicked(article, user.id)
+                            }
+                          >
+                            <MdCreate size={16} />
+                          </button>
 
-                        <Dialog.Root>
-                          <Dialog.Trigger asChild>
-                            <button onClick={() => updateUserClicked(user.id)}>
-                              <BiTrash color="#FF1313" size={16} />
-                            </button>
-                          </Dialog.Trigger>
+                          <Dialog.Root>
+                            <Dialog.Trigger asChild>
+                              <button
+                                onClick={() => updateUserClicked(user.id)}
+                              >
+                                <BiTrash color="#FF1313" size={16} />
+                              </button>
+                            </Dialog.Trigger>
 
-                          <RemoveDashboardButtonArticles
-                            userId={userClicked}
-                            articleData={article}
-                          />
-                        </Dialog.Root>
-                      </TdButton>
-                    </tr>
-                  ));
-                })}
+                            <RemoveDashboardButtonArticles
+                              userId={userClicked}
+                              articleData={article}
+                            />
+                          </Dialog.Root>
+                        </TdButton>
+                      </tr>
+                    ))
+                  )
+                ) : (
+                  <tr>
+                    <td style={{ textAlign: "center" }}>
+                      Não tem artigos cadastrados
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </ArticlesTable>
           </TableContainer>
@@ -132,25 +142,35 @@ export default function Dashboard() {
           <TableContainer>
             <UsersTable>
               <tbody>
-                {users.map((user) => {
-                  return (
-                    <tr key={user.id}>
-                      <td width="45%">{user.name}</td>
-                      <td>{user.articles.length} artigos</td>
-                      <TdButton>
-                        <Dialog.Root>
-                          <Dialog.Trigger asChild>
-                            <button onClick={() => updateUserClicked(user.id)}>
-                              <BiTrash color="#FF1313" size={16} />
-                            </button>
-                          </Dialog.Trigger>
+                {users.length > 0 ? (
+                  users.map((user) => {
+                    return (
+                      <tr key={user.id}>
+                        <td width="45%">{user.name}</td>
+                        <td>{user.articles.length} artigos</td>
+                        <TdButton>
+                          <Dialog.Root>
+                            <Dialog.Trigger asChild>
+                              <button
+                                onClick={() => updateUserClicked(user.id)}
+                              >
+                                <BiTrash color="#FF1313" size={16} />
+                              </button>
+                            </Dialog.Trigger>
 
-                          <RemoveDashboardButtonUsers userId={userClicked} />
-                        </Dialog.Root>
-                      </TdButton>
-                    </tr>
-                  );
-                })}
+                            <RemoveDashboardButtonUsers userId={userClicked} />
+                          </Dialog.Root>
+                        </TdButton>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td style={{ textAlign: "center" }}>
+                      Não tem usuários cadastrados
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </UsersTable>
           </TableContainer>

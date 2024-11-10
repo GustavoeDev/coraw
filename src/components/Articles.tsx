@@ -17,16 +17,20 @@ export default function Articles() {
       <ArticlesContainer>
         <h3>Meus artigos</h3>
         <div>
-          {userValid?.articles.map((article, index) => {
-            return (
+          {userValid?.articles.length === 0 ? (
+            <p style={{ fontSize: "0.875rem", color: "#8C8C8C" }}>
+              Você ainda não publicou artigos...
+            </p>
+          ) : (
+            userValid?.articles.map((article, index) => (
               <ArticleCard
                 key={index}
                 title={article.title}
                 description={article.description}
                 createdAt={article.createdAt}
               />
-            );
-          })}
+            ))
+          )}
         </div>
       </ArticlesContainer>
     </>

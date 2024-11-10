@@ -42,6 +42,8 @@ export const HeaderNavigation = styled("nav", {
   p: {
     color: "$gray500",
     fontSize: "$md",
+    borderRight: "0.5px solid $gray600",
+    paddingRight: "1rem",
 
     span: {
       color: "$white",

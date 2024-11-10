@@ -2,11 +2,31 @@ import { HeaderContainer } from "@/styles/components/Header";
 import Image from "next/image";
 
 import logoCoraw from "../assets/logo.svg";
+import Link from "next/link";
 
-export default function Header() {
+interface HeaderProps {
+  variant: "dashboard" | "normal";
+}
+
+export default function Header({ variant }: HeaderProps) {
   return (
-    <HeaderContainer>
-      <Image src={logoCoraw} alt="Logo do Coraw" />
-    </HeaderContainer>
+    <>
+      {variant === "normal" && (
+        <HeaderContainer>
+          <div>
+            <Image src={logoCoraw} alt="Logo do Coraw" />
+          </div>
+        </HeaderContainer>
+      )}
+
+      {variant === "dashboard" && (
+        <HeaderContainer>
+          <div>
+            <Image src={logoCoraw} alt="Logo do Coraw" />
+            <Link href="/login">Sair</Link>
+          </div>
+        </HeaderContainer>
+      )}
+    </>
   );
 }
