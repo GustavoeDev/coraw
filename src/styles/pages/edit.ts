@@ -86,14 +86,18 @@ export const EditForm = styled("form", {
     fontSize: "$md",
     fontWeight: "bold",
     cursor: "pointer",
+    marginTop: "1rem",
   },
 });
 
-export const LabelContainerEdit = styled("div", {
+export const ContainerEdit = styled("a", {
   position: "relative",
+  textDecoration: "none",
+  color: "$white",
 });
 
-export const FileLabelSelectEdit = styled("label", {
+export const FileSelectEdit = styled("div", {
+  height: "2.68rem",
   backgroundColor: "$gray800",
   padding: "0.75rem",
   borderRadius: 6,
@@ -102,7 +106,7 @@ export const FileLabelSelectEdit = styled("label", {
   color: "$gray600",
 });
 
-export const FileLabelEdit = styled("label", {
+export const FileEdit = styled("div", {
   position: "absolute",
   backgroundColor: "$gray700",
   padding: "0.75rem 0",

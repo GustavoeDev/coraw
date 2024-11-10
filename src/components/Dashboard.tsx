@@ -2,7 +2,11 @@
 
 import Header from "@/components/Header";
 import * as Dialog from "@radix-ui/react-dialog";
-import { UserValid } from "@/contexts/UserValidLogin";
+import {
+  Article,
+  UserValid,
+  UserValidLoginContext,
+} from "@/contexts/UserValidLogin";
 import { usersApi } from "@/lib/axios";
 import {
   ArticlesTable,
@@ -13,7 +17,7 @@ import {
   UsersTable,
 } from "@/styles/pages/dashboard";
 import { dateFormatter } from "@/utils/dateFormatter";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import {
   MdCreate,
@@ -24,11 +28,15 @@ import {
 
 import RemoveDashboardButtonArticles from "./RemoveDashboardButtonArticles";
 import RemoveDashboardButtonUsers from "./RemoveDashboardButtonUsers";
+import { redirect } from "next/navigation";
 
 export default function Dashboard() {
   const [users, setUsers] = useState<UserValid[]>([]);
   const [quantityArticles, setQuantityArticles] = useState(0);
-  const [userClicked, setUserClicked] = useState(0);
+
+  const { userClicked, updateUserClicked, updateArticleClicked } = useContext(
+    UserValidLoginContext
+  );
 
   async function getUsers() {
     const response = await usersApi.get("/users");
@@ -46,6 +54,12 @@ export default function Dashboard() {
       users.reduce((acc, user) => acc + user.articles.length, 0)
     );
   }, [users]);
+
+  function handleChangeInfoClicked(article: Article, user: number) {
+    updateArticleClicked(article);
+    updateUserClicked(user);
+    redirect("/admin/article/edit");
+  }
 
   return (
     <>
@@ -85,13 +99,17 @@ export default function Dashboard() {
                         <button>
                           <MdOutlineVisibility size={16} />
                         </button>
-                        <button>
+                        <button
+                          onClick={() =>
+                            handleChangeInfoClicked(article, user.id)
+                          }
+                        >
                           <MdCreate size={16} />
                         </button>
 
                         <Dialog.Root>
                           <Dialog.Trigger asChild>
-                            <button onClick={() => setUserClicked(user.id)}>
+                            <button onClick={() => updateUserClicked(user.id)}>
                               <BiTrash color="#FF1313" size={16} />
                             </button>
                           </Dialog.Trigger>
@@ -118,15 +136,9 @@ export default function Dashboard() {
                       <td width="45%">{user.name}</td>
                       <td>{user.articles.length} artigos</td>
                       <TdButton>
-                        <button>
-                          <MdOutlineVisibility size={16} />
-                        </button>
-                        <button>
-                          <MdCreate size={16} />
-                        </button>
                         <Dialog.Root>
                           <Dialog.Trigger asChild>
-                            <button onClick={() => setUserClicked(user.id)}>
+                            <button onClick={() => updateUserClicked(user.id)}>
                               <BiTrash color="#FF1313" size={16} />
                             </button>
                           </Dialog.Trigger>

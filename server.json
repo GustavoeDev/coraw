@@ -17,18 +17,55 @@
     },
     {
       "name": "João Neto",
-      "email": "joao@hotmail.com",
+      "email": "joao@gmail.com",
       "password": "joao123",
       "articles": [
         {
-          "title": "mar",
-          "description": "bbfgbf",
+          "title": "vida humana nos mares",
+          "description": "vsdvbfbfd",
           "fileUpload": {},
-          "fileUrl": "https://res.cloudinary.com/diebb0uc0/raw/upload/v1731110747/ker9drzapqhndkoqe4ax.zip",
-          "createdAt": "2024-11-09T00:05:47.697Z"
+          "fileUrl": "https://res.cloudinary.com/diebb0uc0/raw/upload/v1731247132/otz3ikqewmth95xvw3x3.png",
+          "createdAt": "2024-11-10T13:58:50.461Z"
         }
       ],
       "id": 2
+    },
+    {
+      "name": "Maria Liduina",
+      "email": "liduina@hotmail.com",
+      "password": "lidu123",
+      "articles": [
+        {
+          "title": "baleias são animais grandes e legais",
+          "description": "baleias",
+          "fileUpload": {},
+          "fileUrl": "https://res.cloudinary.com/diebb0uc0/raw/upload/v1731252647/uhsohdoe9g86cnjikyx5.png",
+          "createdAt": "2024-11-10T15:30:45.444Z"
+        },
+        {
+          "title": "peixes",
+          "description": "ioaefokaef",
+          "fileUpload": {},
+          "fileUrl": "https://res.cloudinary.com/diebb0uc0/raw/upload/v1731252657/n3rmu31bdaos9jvughkj.zip",
+          "createdAt": "2024-11-10T15:30:54.616Z"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "name": "Hian Sebasthian",
+      "email": "hian@hotmail.com",
+      "password": "hian123",
+      "articles": [
+        {
+          "title": "peixe espada",
+          "description": "bdkvomsdkomfa",
+          "fileUpload": {},
+          "fileUrl": "https://res.cloudinary.com/diebb0uc0/raw/upload/v1731252730/hy0chhwjxg7q8hspubzo.png",
+          "createdAt": "2024-11-10T15:32:07.607Z"
+        }
+      ],
+      "id": 4
     }
   ],
   "admin": {

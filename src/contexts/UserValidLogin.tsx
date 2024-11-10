@@ -21,6 +21,10 @@ export interface UserValid {
 interface UserValidLoginContextType {
   userValid: UserValid | null;
   addUserValid: (user: UserValid) => void;
+  userClicked: number;
+  updateUserClicked: (userId: number) => void;
+  articleClicked: Article | null;
+  updateArticleClicked: (article: Article) => void;
 }
 
 export const UserValidLoginContext = createContext<UserValidLoginContextType>(
@@ -33,6 +37,8 @@ interface UserValidLoginProps {
 
 export default function UserValidLogin({ children }: UserValidLoginProps) {
   const [userValid, setUserValid] = useState<UserValid | null>(null);
+  const [userClicked, setUserClicked] = useState(0);
+  const [articleClicked, setArticleClicked] = useState<Article | null>(null);
 
   useEffect(() => {
     const storedStateAsJSON = localStorage.getItem("@coraw:userValid-1.0.0");
@@ -40,6 +46,14 @@ export default function UserValidLogin({ children }: UserValidLoginProps) {
       setUserValid(JSON.parse(storedStateAsJSON));
     }
   }, []);
+
+  function updateUserClicked(userId: number) {
+    setUserClicked(userId);
+  }
+
+  function updateArticleClicked(articleData: Article) {
+    setArticleClicked(articleData);
+  }
 
   function addUserValid(user: UserValid) {
     setUserValid(user);
@@ -53,7 +67,16 @@ export default function UserValidLogin({ children }: UserValidLoginProps) {
   }, [userValid]);
 
   return (
-    <UserValidLoginContext.Provider value={{ userValid, addUserValid }}>
+    <UserValidLoginContext.Provider
+      value={{
+        userValid,
+        addUserValid,
+        updateUserClicked,
+        userClicked,
+        updateArticleClicked,
+        articleClicked,
+      }}
+    >
       {children}
     </UserValidLoginContext.Provider>
   );
