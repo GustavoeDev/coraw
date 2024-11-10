@@ -92,6 +92,11 @@ export const ArticlesTable = styled("table", {
       background: "none",
       border: 0,
       color: "$white",
+
+      a: {
+        lineHeight: 0,
+        color: "$white",
+      },
     },
   },
 });

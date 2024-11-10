@@ -21,9 +21,9 @@ import { useContext, useEffect, useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import {
   MdCreate,
+  MdDownload,
   MdInsertDriveFile,
   MdOutlinePeopleOutline,
-  MdOutlineVisibility,
 } from "react-icons/md";
 
 import RemoveDashboardButtonArticles from "./RemoveDashboardButtonArticles";
@@ -97,7 +97,9 @@ export default function Dashboard() {
                       </td>
                       <TdButton>
                         <button>
-                          <MdOutlineVisibility size={16} />
+                          <a href={article.fileUrl} target="_blank">
+                            <MdDownload size={16} />
+                          </a>
                         </button>
                         <button
                           onClick={() =>

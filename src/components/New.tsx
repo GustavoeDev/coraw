@@ -51,29 +51,52 @@ export default function NewArticle() {
     const { title, description, fileUpload } = data;
 
     let fileUrl = "";
+
     if (fileUpload) {
-      fileUrl = await uploadFileToCloudinary(fileUpload);
+      const fileType = fileUpload.type;
+
+      if (fileType.startsWith("image/")) {
+        fileUrl = await uploadFileToCloudinary(fileUpload);
+        saveNewArticle(fileUrl);
+      } else {
+        const reader = new FileReader();
+        reader.readAsDataURL(fileUpload);
+        reader.onload = () => {
+          const base64File = reader.result as string;
+          fileUrl = base64File;
+
+          const existingFiles = JSON.parse(
+            localStorage.getItem("uploadedFiles") || "[]"
+          );
+          existingFiles.push(base64File);
+          localStorage.setItem("uploadedFiles", JSON.stringify(existingFiles));
+
+          saveNewArticle(fileUrl);
+        };
+      }
     }
 
-    const newArticle: Article = {
-      title: title,
-      description: description,
-      fileUpload: fileUpload,
-      fileUrl: fileUrl,
-      createdAt: new Date(),
-    };
+    function saveNewArticle(fileUrl: string) {
+      const newArticle: Article = {
+        title: title,
+        description: description,
+        fileUpload: fileUpload,
+        fileUrl: fileUrl,
+        createdAt: new Date(),
+      };
 
-    const updatedUser: UserValid = {
-      ...userValid!,
-      articles: [...(userValid?.articles ?? []), newArticle],
-    };
+      const updatedUser: UserValid = {
+        ...userValid!,
+        articles: [...(userValid?.articles ?? []), newArticle],
+      };
 
-    await usersApi.put(`/users/${userValid?.id}`, updatedUser);
+      usersApi.put(`/users/${userValid?.id}`, updatedUser);
 
-    addUserValid(updatedUser);
+      addUserValid(updatedUser);
 
-    setFileName("");
-    reset();
+      setFileName("");
+      reset();
+    }
   }
 
   return (
