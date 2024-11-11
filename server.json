@@ -43,6 +43,13 @@
         }
       ],
       "id": 2
+    },
+    {
+      "name": "Hian Sebasthian",
+      "email": "hian@hotmail.com",
+      "password": "hian123",
+      "articles": [],
+      "id": 3
     }
   ],
   "admin": {

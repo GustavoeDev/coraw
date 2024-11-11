@@ -58,16 +58,27 @@ export default function Home() {
   async function handleCreateNewUser(data: User) {
     const { name, email, password, articles } = data;
 
-    const finalArticles = articles ?? [];
+    const existingUser = await usersApi.get("/users");
 
-    await usersApi.post("/users", {
-      name,
-      email,
-      password,
-      articles: finalArticles,
-    });
-    reset();
-    redirect("/login");
+    const emailExists = existingUser.data.find(
+      (user: { email: string }) => user.email === email
+    );
+
+    if (!emailExists) {
+      const finalArticles = articles ?? [];
+
+      await usersApi.post("/users", {
+        name,
+        email,
+        password,
+        articles: finalArticles,
+      });
+      reset();
+      redirect("/login");
+    } else {
+      alert("Este email já está em uso");
+      reset();
+    }
   }
 
   return (
