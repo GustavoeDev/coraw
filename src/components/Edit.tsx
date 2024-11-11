@@ -10,8 +10,9 @@ import {
   FileEdit,
   FileSelectEdit,
 } from "@/styles/pages/edit";
-import { redirect } from "next/navigation";
-import { useContext, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import nookies, { parseCookies } from "nookies";
 
 export default function ArticleEdit() {
   const { articleClicked, userClicked } = useContext(UserValidLoginContext);
@@ -20,6 +21,18 @@ export default function ArticleEdit() {
   const [articleDescription, setArticleDescription] = useState(
     articleClicked?.description || ""
   );
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const cookies = parseCookies();
+    const token = cookies.token;
+
+    if (token !== "adminTokenValue") {
+      router.push("/login");
+      nookies.destroy(null, "token", { path: "/" });
+    }
+  }, [router]);
 
   async function handleChangeInfoArticle(event: React.FormEvent) {
     event.preventDefault();
@@ -51,7 +64,7 @@ export default function ArticleEdit() {
 
   return (
     <>
-      <Header />
+      <Header variant="dashboard" />
       <ArticleEditContainer>
         <EditForm action="" onSubmit={handleChangeInfoArticle}>
           <h3>Editar as informações do artigo</h3>

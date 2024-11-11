@@ -1,3 +1,4 @@
+// login.tsx (seu componente de login)
 "use client";
 
 import {
@@ -7,14 +8,14 @@ import {
   LoginInput,
 } from "@/styles/pages/login";
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
 import octopusImg from "../assets/octopus.png";
 import Header from "@/components/Header";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { usersApi } from "@/lib/axios";
-import { redirect } from "next/navigation";
 import { UserValidLoginContext } from "@/contexts/UserValidLogin";
+import { setCookie } from "nookies";
 
 interface UserValid {
   email: string;
@@ -24,11 +25,13 @@ interface UserValid {
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const { addUserValid } = useContext(UserValidLoginContext);
 
   async function handleCheckUserValid(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
     const response = await usersApi.get("/users");
     const data = response.data;
 
@@ -36,19 +39,22 @@ export default function Login() {
       (user: UserValid) => user.email === email && user.password === password
     );
 
-    addUserValid(userValid);
+    if (userValid) {
+      addUserValid(userValid);
+      setCookie(null, "token", "userTokenValue", { path: "/" });
+      router.push("/articles");
+      return;
+    }
 
     const dataAdmin: UserValid = (await usersApi.get("/admin")).data;
-
     const adminUserValid =
       dataAdmin.email === email && dataAdmin.password === password;
 
-    if (userValid) {
-      redirect("/articles");
-    }
-
     if (adminUserValid) {
-      redirect("/admin/dashboard");
+      addUserValid(null);
+      setCookie(null, "token", "adminTokenValue", { path: "/" });
+      router.push("/admin/dashboard");
+      return;
     }
   }
 
@@ -98,7 +104,12 @@ export default function Login() {
             </span>
           </LoginFooter>
         </LoginContent>
-        <Image src={octopusImg} alt="" width={500} height={500} priority />
+        <Image
+          src={octopusImg}
+          alt="Imagem de um polvo"
+          width={500}
+          height={500}
+        />
       </LoginContainer>
     </>
   );

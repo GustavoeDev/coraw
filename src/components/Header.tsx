@@ -1,7 +1,8 @@
 import { HeaderContainer } from "@/styles/components/Header";
 import Image from "next/image";
-
 import logoCoraw from "../assets/logo.svg";
+
+import nookies from "nookies";
 import Link from "next/link";
 
 interface HeaderProps {
@@ -9,6 +10,10 @@ interface HeaderProps {
 }
 
 export default function Header({ variant }: HeaderProps) {
+  function handleLogout() {
+    nookies.destroy(null, "token");
+  }
+
   return (
     <>
       {variant === "normal" && (
@@ -23,7 +28,9 @@ export default function Header({ variant }: HeaderProps) {
         <HeaderContainer>
           <div>
             <Image src={logoCoraw} alt="Logo do Coraw" />
-            <Link href="/login">Sair</Link>
+            <Link href="/login" onClick={handleLogout}>
+              Sair
+            </Link>
           </div>
         </HeaderContainer>
       )}

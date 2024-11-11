@@ -11,9 +11,12 @@ import {
 import Image from "next/image";
 import logoCoraw from "../assets/logo.svg";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdMenu, MdOutlineClose } from "react-icons/md";
 import Link from "next/link";
+import { UserValidLoginContext } from "@/contexts/UserValidLogin";
+
+import nookies, { parseCookies } from "nookies";
 
 interface MenuUserProps {
   name: string | undefined;
@@ -22,6 +25,8 @@ interface MenuUserProps {
 export default function MenuUser({ name }: MenuUserProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isActive, setIsActive] = useState("");
+
+  const { addUserValid } = useContext(UserValidLoginContext);
 
   useEffect(() => {
     const currentUrl = window.location.pathname;
@@ -51,6 +56,17 @@ export default function MenuUser({ name }: MenuUserProps) {
     };
   }, []);
 
+  function handleLogout() {
+    const cookies = parseCookies();
+    const token = cookies.token;
+
+    if (token) {
+      nookies.destroy(null, "token", { path: "/" });
+    }
+
+    addUserValid(null);
+  }
+
   return (
     <HeaderArticles>
       <div>
@@ -69,7 +85,14 @@ export default function MenuUser({ name }: MenuUserProps) {
             Publicar artigo
           </Link>
 
-          <Link href="/login">Sair</Link>
+          <Link
+            href="/login"
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            Sair
+          </Link>
         </HeaderNavigation>
         <NavIcon
           onClick={toggleMenu}
@@ -91,7 +114,13 @@ export default function MenuUser({ name }: MenuUserProps) {
               </Link>
             </li>
             <li>
-              <Link href="/login" onClick={closeMenu}>
+              <Link
+                href="/login"
+                onClick={() => {
+                  closeMenu();
+                  handleLogout();
+                }}
+              >
                 Sair
               </Link>
             </li>

@@ -20,7 +20,7 @@ export interface UserValid {
 
 interface UserValidLoginContextType {
   userValid: UserValid | null;
-  addUserValid: (user: UserValid) => void;
+  addUserValid: (user: UserValid | null) => void;
   userClicked: number;
   updateUserClicked: (userId: number) => void;
   articleClicked: Article | null;
@@ -55,7 +55,7 @@ export default function UserValidLogin({ children }: UserValidLoginProps) {
     setArticleClicked(articleData);
   }
 
-  function addUserValid(user: UserValid) {
+  function addUserValid(user: UserValid | null) {
     setUserValid(user);
   }
 

@@ -14,13 +14,16 @@ import {
   NewArticleForm,
 } from "@/styles/pages/new";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 import { usersApi } from "@/lib/axios";
 import { uploadFileToCloudinary } from "@/lib/cloudinary";
+
+import { useRouter } from "next/navigation";
+import nookies, { parseCookies } from "nookies";
 
 const newArticleValidationSchema = zod.object({
   title: zod.string(),
@@ -34,6 +37,18 @@ export default function NewArticle() {
   const [fileName, setFileName] = useState("");
 
   const { userValid, addUserValid } = useContext(UserValidLoginContext);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const cookies = parseCookies();
+    const token = cookies.token;
+
+    if (token !== "userTokenValue") {
+      router.push("/login");
+      nookies.destroy(null, "token", { path: "/" });
+    }
+  }, [router]);
 
   const name = userValid?.name.split(" ")[0];
 

@@ -3,11 +3,25 @@
 import { ArticlesContainer } from "@/styles/pages/articles";
 import { ArticleCard } from "@/components/ArticlesCard";
 import MenuUser from "@/components/MenuUser";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserValidLoginContext } from "@/contexts/UserValidLogin";
+import { useRouter } from "next/navigation";
+import nookies, { parseCookies } from "nookies";
 
 export default function Articles() {
   const { userValid } = useContext(UserValidLoginContext);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const cookies = parseCookies();
+    const token = cookies.token;
+
+    if (token !== "userTokenValue") {
+      router.push("/login");
+      nookies.destroy(null, "token", { path: "/" });
+    }
+  }, [router]);
 
   const name = userValid?.name.split(" ")[0];
 
