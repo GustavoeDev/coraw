@@ -2,7 +2,7 @@
 
 Coraw é um sistema web responsável pelo gerenciamento de um evento científico que aborda o branqueamento de corais, desenvolvido em NextJS + TypeScript. Ele facilita a organização e a gestão do evento, proporcionando uma plataforma eficiente tanto para os participantes quanto para os administradores.
 
-<img src=""
+<img src="./src/assets/coraw.png" width="100%"/>
 
 ## 🚀 Funcionalidades
 
