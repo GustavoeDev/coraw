@@ -28,7 +28,7 @@ Coraw é um sistema web responsável pelo gerenciamento de um evento científico
 
 Acesse o link do Figma, a base do Coraw:
 
-[Link do Coraw](https://www.figma.com/design/yF9ZXJrc7g2WXr43WSGRfs/Branqueamento-de-Corais?node-id=0-1&node-type=canvas&t=XHPewIPXynAGkdqD-0)
+<a href="https://www.figma.com/design/yF9ZXJrc7g2WXr43WSGRfs/Branqueamento-de-Corais?node-id=0-1&node-type=canvas&t=XHPewIPXynAGkdqD-0" target="_blank">Link do Coraw</a>
 
 ## 🖥️ Como rodar o projeto
 
