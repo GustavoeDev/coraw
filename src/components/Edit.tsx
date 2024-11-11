@@ -10,9 +10,9 @@ import {
   FileEdit,
   FileSelectEdit,
 } from "@/styles/pages/edit";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import nookies, { parseCookies } from "nookies";
+import { removeTokenAdmin } from "@/actions/removeToken";
 
 export default function ArticleEdit() {
   const { articleClicked, userClicked } = useContext(UserValidLoginContext);
@@ -22,17 +22,9 @@ export default function ArticleEdit() {
     articleClicked?.description || ""
   );
 
-  const router = useRouter();
-
   useEffect(() => {
-    const cookies = parseCookies();
-    const token = cookies.token;
-
-    if (token !== "adminTokenValue") {
-      router.push("/login");
-      nookies.destroy(null, "token", { path: "/" });
-    }
-  }, [router]);
+    removeTokenAdmin();
+  }, []);
 
   async function handleChangeInfoArticle(event: React.FormEvent) {
     event.preventDefault();

@@ -26,11 +26,10 @@ import {
   MdOutlinePeopleOutline,
 } from "react-icons/md";
 
-import nookies, { parseCookies } from "nookies";
-
 import RemoveDashboardButtonArticles from "./RemoveDashboardButtonArticles";
 import RemoveDashboardButtonUsers from "./RemoveDashboardButtonUsers";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
+import { removeTokenAdmin } from "@/actions/removeToken";
 
 export default function Dashboard() {
   const [users, setUsers] = useState<UserValid[]>([]);
@@ -39,18 +38,6 @@ export default function Dashboard() {
   const { userClicked, updateUserClicked, updateArticleClicked } = useContext(
     UserValidLoginContext
   );
-
-  const router = useRouter();
-
-  useEffect(() => {
-    const cookies = parseCookies();
-    const token = cookies.token;
-
-    if (token !== "adminTokenValue") {
-      router.push("/login");
-      nookies.destroy(null, "token", { path: "/" });
-    }
-  }, [router]);
 
   async function getUsers() {
     const response = await usersApi.get("/users");
@@ -74,6 +61,10 @@ export default function Dashboard() {
     updateUserClicked(user);
     redirect("/admin/article/edit");
   }
+
+  useEffect(() => {
+    removeTokenAdmin();
+  }, []);
 
   return (
     <>
