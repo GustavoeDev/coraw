@@ -86,7 +86,7 @@ export default function MenuUser({ name }: MenuUserProps) {
           </Link>
 
           <Link
-            href="/login"
+            href="/signin"
             onClick={() => {
               handleLogout();
             }}
@@ -115,7 +115,7 @@ export default function MenuUser({ name }: MenuUserProps) {
             </li>
             <li>
               <Link
-                href="/login"
+                href="/signin"
                 onClick={() => {
                   closeMenu();
                   handleLogout();

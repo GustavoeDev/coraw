@@ -75,7 +75,7 @@ export default function SignUp() {
         articles: finalArticles,
       });
       reset();
-      redirect("/login");
+      redirect("/signin");
     } else {
       alert("Este email já está em uso");
       reset();
@@ -155,7 +155,7 @@ export default function SignUp() {
           <button type="submit">Cadastrar</button>
 
           <p>
-            Já possui cadastro? <Link href="/login">Faça login</Link>
+            Já possui cadastro? <Link href="/signin">Faça login</Link>
           </p>
         </RegistrationModal>
       </RegistrationContainer>

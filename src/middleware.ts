@@ -16,7 +16,7 @@ export default async function middleware(request: NextRequest) {
   const isProtectedRoute = protectedRoutes.includes(request.nextUrl.pathname);
 
   if (isProtectedRoute && !token) {
-    const url = new URL("/login", request.url);
+    const url = new URL("/signin", request.url);
     url.searchParams.set("unauthorized", "true");
     return NextResponse.redirect(url);
   }

@@ -28,7 +28,7 @@ export default function Header({ variant }: HeaderProps) {
         <HeaderContainer>
           <div>
             <Image src={logoCoraw} alt="Logo do Coraw" />
-            <Link href="/login" onClick={handleLogout}>
+            <Link href="/signin" onClick={handleLogout}>
               Sair
             </Link>
           </div>

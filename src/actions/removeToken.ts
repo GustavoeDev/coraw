@@ -7,7 +7,7 @@ export function removeTokenAdmin() {
 
   if (token !== "adminTokenValue") {
     nookies.destroy(null, "token", { path: "/" });
-    redirect("/login");
+    redirect("/signin");
   }
 }
 
@@ -17,6 +17,6 @@ export function removeTokenUser() {
 
   if (token !== "userTokenValue") {
     nookies.destroy(null, "token", { path: "/" });
-    redirect("/login");
+    redirect("/signin");
   }
 }
