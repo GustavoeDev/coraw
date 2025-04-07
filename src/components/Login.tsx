@@ -100,7 +100,7 @@ export default function Login() {
             <button type="submit">Entrar</button>
 
             <span>
-              Ainda não possui cadastro? <Link href="/">Cadastre-se</Link>
+              Ainda não possui cadastro? <Link href="/signup">Cadastre-se</Link>
             </span>
           </LoginFooter>
         </LoginContent>
