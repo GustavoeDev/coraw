@@ -7,7 +7,7 @@ export default async function middleware(request: NextRequest) {
   const token = request.cookies.get(TOKEN_KEY)?.value;
 
   const protectedRoutes = [
-    "/articles",
+    "/",
     "/new",
     "/admin/dashboard",
     "/admin/article/edit",
@@ -25,5 +25,5 @@ export default async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/articles", "/new", "/admin/:path*"],
+  matcher: ["/", "/new", "/admin/:path*"],
 };

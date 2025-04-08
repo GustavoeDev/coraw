@@ -42,7 +42,7 @@ export default function Login() {
     if (userValid) {
       addUserValid(userValid);
       setCookie(null, "token", "userTokenValue", { path: "/" });
-      router.push("/articles");
+      router.push("/");
       return;
     }
 
