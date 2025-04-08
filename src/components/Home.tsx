@@ -27,14 +27,22 @@ export default function Articles() {
               Você ainda não publicou artigos...
             </p>
           ) : (
-            userValid?.articles.map((article, index) => (
-              <ArticleCard
-                key={index}
-                title={article.title}
-                description={article.description}
-                createdAt={article.createdAt}
-              />
-            ))
+            userValid?.articles
+              ?.slice()
+              .sort(
+                (a, b) =>
+                  new Date(b.createdAt).getTime() -
+                  new Date(a.createdAt).getTime()
+              )
+              .map((article, index) => (
+                <ArticleCard
+                  key={index}
+                  title={article.title}
+                  path={article.fileUrl || ""}
+                  description={article.description}
+                  createdAt={article.createdAt}
+                />
+              ))
           )}
         </div>
       </ArticlesContainer>

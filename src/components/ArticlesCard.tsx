@@ -10,18 +10,20 @@ interface ArticleCardProps {
   title: string;
   description: string;
   createdAt: Date;
+  path: string | undefined;
 }
 
 export function ArticleCard({
   title,
   description,
   createdAt,
+  path,
 }: ArticleCardProps) {
   const dateFormatter = new Intl.DateTimeFormat("pt-BR");
   const formattedDate = dateFormatter.format(new Date(createdAt));
 
   return (
-    <ArticlesCard>
+    <ArticlesCard href={path ? path : ""} target="_blank">
       <Image src={bgImg} alt="" />
       <div>
         <span>{formattedDate}</span>

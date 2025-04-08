@@ -75,12 +75,6 @@ export default function MenuUser({ name }: MenuUserProps) {
           <p>
             Olá, <span>{name}</span>
           </p>
-          <Link
-            href="/articles"
-            data-active={isActive === "/articles" ? true : false}
-          >
-            Meus artigos
-          </Link>
           <Link href="/new" data-active={isActive === "/new" ? true : false}>
             Publicar artigo
           </Link>
@@ -98,16 +92,11 @@ export default function MenuUser({ name }: MenuUserProps) {
           onClick={toggleMenu}
           position={isMenuOpen ? "fixed" : undefined}
         >
-          {isMenuOpen ? <MdOutlineClose size={36} /> : <MdMenu size={36} />}
+          {isMenuOpen ? <MdOutlineClose size={30} /> : <MdMenu size={30} />}
         </NavIcon>
 
         <NavMenu active={isMenuOpen}>
           <NavList active={isMenuOpen}>
-            <li>
-              <Link href="/articles" onClick={closeMenu}>
-                Meus Artigos
-              </Link>
-            </li>
             <li>
               <Link href="/new" onClick={closeMenu}>
                 Publicar artigo
