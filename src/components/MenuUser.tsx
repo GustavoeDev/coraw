@@ -70,7 +70,10 @@ export default function MenuUser({ name }: MenuUserProps) {
   return (
     <HeaderArticles>
       <div>
-        <Image src={logoCoraw} alt="Logo do Coraw" />
+        <Link href="/">
+          <Image src={logoCoraw} alt="Logo do Coraw" />
+        </Link>
+
         <HeaderNavigation>
           <p>
             Olá, <span>{name}</span>

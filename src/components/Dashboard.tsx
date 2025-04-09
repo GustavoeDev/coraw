@@ -2,11 +2,7 @@
 
 import Header from "@/components/Header";
 import * as Dialog from "@radix-ui/react-dialog";
-import {
-  Article,
-  UserValid,
-  UserValidLoginContext,
-} from "@/contexts/UserValidLogin";
+import { UserValid, UserValidLoginContext } from "@/contexts/UserValidLogin";
 import { usersApi } from "@/lib/axios";
 import {
   ArticlesTable,
@@ -20,7 +16,6 @@ import { dateFormatter } from "@/utils/dateFormatter";
 import { useContext, useEffect, useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import {
-  MdCreate,
   MdDownload,
   MdInsertDriveFile,
   MdOutlinePeopleOutline,
@@ -28,16 +23,13 @@ import {
 
 import RemoveDashboardButtonArticles from "./RemoveDashboardButtonArticles";
 import RemoveDashboardButtonUsers from "./RemoveDashboardButtonUsers";
-import { redirect } from "next/navigation";
 import { removeTokenAdmin } from "@/actions/removeToken";
 
 export default function Dashboard() {
   const [users, setUsers] = useState<UserValid[]>([]);
   const [quantityArticles, setQuantityArticles] = useState(0);
 
-  const { userClicked, updateUserClicked, updateArticleClicked } = useContext(
-    UserValidLoginContext
-  );
+  const { userClicked, updateUserClicked } = useContext(UserValidLoginContext);
 
   async function getUsers() {
     const response = await usersApi.get("/users");
@@ -55,12 +47,6 @@ export default function Dashboard() {
       users.reduce((acc, user) => acc + user.articles.length, 0)
     );
   }, [users]);
-
-  function handleChangeInfoClicked(article: Article, user: number) {
-    updateArticleClicked(article);
-    updateUserClicked(user);
-    redirect("/admin/article/edit");
-  }
 
   useEffect(() => {
     removeTokenAdmin();
@@ -106,13 +92,6 @@ export default function Dashboard() {
                             <a href={article.fileUrl} target="_blank">
                               <MdDownload size={16} />
                             </a>
-                          </button>
-                          <button
-                            onClick={() =>
-                              handleChangeInfoClicked(article, user.id)
-                            }
-                          >
-                            <MdCreate size={16} />
                           </button>
 
                           <Dialog.Root>
